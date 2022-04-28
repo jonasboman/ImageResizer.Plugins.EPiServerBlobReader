@@ -77,6 +77,17 @@ namespace ImageResizer.Plugins.EPiServer
             return target;
         }
 
+        public static UrlBuilder Format(this UrlBuilder target, string format)
+        {
+            if(target == null)
+                throw new ArgumentNullException(nameof(target));
+
+            if (!target.IsEmpty)
+                target.QueryCollection.Add("format", format);
+
+            return target;
+        }
+
         public static UrlBuilder FitMode(this UrlBuilder target, FitMode mode)
         {
             if (target == null)
